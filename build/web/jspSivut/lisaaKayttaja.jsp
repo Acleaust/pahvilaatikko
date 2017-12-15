@@ -14,33 +14,18 @@
         <title>Käyttäjän lisääminen</title>
     </head>
     <body>
-        <%
-            Tietovarasto tietovarasto = new Tietovarasto();
-        %>
-        <h2>Toimenpiteen kirjaus</h2>
-        <!--Tähän tulee käyttöliittymä koodi-->
-        <% 
-            request.setCharacterEncoding("UTF-8");
-            //Otetaan aloiteID ja aloitekuvaus talteen muuttujiin
-            String aloiteID = request.getParameter("aloiteID");
-            String aloitekuvaus = request.getParameter("aloitekuvaus");
+        <h1>Uuden käyttäjän lisäys</h1>
+        <form name="lisays" action="../../Aloitelaatikko_ver2/lisaaKayttaja" method="post">
+            <input type="text" name="etunimi" placeholder="Etunimi"><br>
+            <input type="text" name="sukunimi" placeholder="Sukunimmi"><br>
+            <input type="email" name="email" placeholder="Email"><br>
+            <input type="text" name="kayttajatunnus" placeholder="Käyttäjätunnus"><br>
+            <input type="password" name="salasana" placeholder="Salasana"><br>
+            <input type="text" name="puhelin" placeholder="Puhelin"><br>
+            <!-- Ei KÄYTÖSSÄ: <input type="date" name="luontipaivays"><br> -->
             
-            //Aloite aloite =
-            tietovarasto.haeAloiteAloitetunnuksella(Integer.parseInt(aloiteID));
-            //String aloitekuvaus = aloite.getAloitekuvaus();
-        %>
-        
-        <p>Aloitteen kuvaus: <%=aloitekuvaus %></p>
-        <form action="../../Aloitelaatikko_ver2/lisaaToimenpide" method="post">
-            
-            Toimenpide:<br>
-            <textarea name="kuvaus" rows="4" cols="30"></textarea><br>
-            
-            Toimenpiteen kirjasi:<br>
-            <input type="text" name="kayttajaID" size="5"><br><br>
-            
-            <input type="submit" value"">
-            
+            <input type="reset" value="Tyhjennä" name="reset" />
+            <input type="submit" value="Talleta" name="talleta" />            
         </form>
     </body>
 </html>

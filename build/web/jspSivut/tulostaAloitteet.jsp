@@ -17,7 +17,7 @@
             Tietovarasto tietovarasto = new Tietovarasto();
         %>
         
-        <h1>Kaikki aloitteet</h1>
+        <h1>Kikki aloitteet</h1>
         <table>
             <thead>
                 <tr>
