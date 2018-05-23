@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servletit;
 
 import java.io.IOException;
@@ -17,10 +12,6 @@ import Tietovarastopakkaus.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *
- * @author haaar
- */
 @WebServlet(name = "lisaaKayttaja", urlPatterns = {"/lisaaKayttaja"})
 public class lisaaKayttaja extends HttpServlet {
 

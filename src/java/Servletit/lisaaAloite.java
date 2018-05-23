@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servletit;
 import Tietovarastopakkaus.*;
 import java.io.IOException;
@@ -15,10 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author haaar
- */
 @WebServlet(name = "lisaaAloite", urlPatterns = {"/lisaaAloite"})
 public class lisaaAloite extends HttpServlet {
 
@@ -42,6 +33,7 @@ public class lisaaAloite extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         
         // Talletetaan lomakkeelle syötetut käyttäjän tiedot
         String aloitenimi = request.getParameter("aloitenimi");
@@ -52,10 +44,10 @@ public class lisaaAloite extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
-            out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet lisaaAloite</title>");            
             out.println("</head>");
+            out.println("<html>");
             out.println("<body>");
             
             out.println("Aloitenimi: "+aloitenimi+"<br>");

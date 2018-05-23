@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servletit;
 
+import Tietovarastopakkaus.Toimenpide;
 import Tietovarastopakkaus.Tietovarasto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,23 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author s1601379
- */
 @WebServlet(name = "lisaaToimenpide", urlPatterns = {"/lisaaToimenpide"})
 public class lisaaToimenpide extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
     //Määritellään viittaus Tietovarsto-luokkaan
     private Tietovarasto tietovarasto = new Tietovarasto();
     //Määritellään päiväysolio ja päiväys formaatti (esim. 2017-11-07)
@@ -52,12 +34,31 @@ public class lisaaToimenpide extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
-            out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet lisaaToimenpide</title>");            
             out.println("</head>");
+            out.println("<html>");
             out.println("<body>");
-            out.println("<h1>Servlet lisaaToimenpide at " + request.getContextPath() + "</h1>");
+            String toimenpideID = null;
+            
+            out.println("ToimenpideID: "+toimenpideID+"<br>");
+            out.println("Toimenpiteen kuvaus: "+kuvaus+"<br>");
+            out.println("KäyttäjäID: "+kayttajaID+"<br>");
+            out.println("AloiteID: "+aloiteID+"<br>");
+            out.println("Luontipäivä: "+luontipaivays+"<br>");
+            
+            // Luodaan käyttäjä-olio lomakkeelta saatujen tietojen avulla
+            Toimenpide toimenpide = new Toimenpide(0, Integer.parseInt(kayttajaID), Integer.parseInt(aloiteID), luontipaivays , kuvaus );
+            
+            // Kutusutaan metodia lisaaKayttaja. Metodille väliteään kayttaja-olio
+            if(tietovarasto.lisaaToimenpide(toimenpide)){
+                // Lisäys onnistui
+                out.println("<h2>Lisäys onnistui</h2>");
+            }else{
+                // Lisäys epäonnistui
+                out.println("<h2>Lisäys epäonnistui</h2>");
+            }
+            
             out.println("</body>");
             out.println("</html>");
         }
