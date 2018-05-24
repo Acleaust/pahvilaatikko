@@ -78,7 +78,7 @@ public class Tietovarasto {
             System.out.println("Tietokantayhteys avattu: " + url);
 
             // Määritellään lisäystä varten SQL-lauseet
-            String lisaaKayttajaSQL = "insert into aloitteet values(?,?,?,?,?,1)";
+            String lisaaKayttajaSQL = "insert into aloitteet values(?,?,?,?,?)";
 
             // Valmistellaan SQL-lause tietokantapalvelinta varten
             lisayslause = yhteys.prepareStatement(lisaaKayttajaSQL);
@@ -118,7 +118,6 @@ public class Tietovarasto {
 
             // Määritellään lisäystä varten SQL-lauseet
             String lisaaKayttajaSQL = "DELETE FROM aloitteet WHERE aloiteID = (?)";
-            System.out.println(lisaaKayttajaSQL);
             // Valmistellaan SQL-lause tietokantapalvelinta varten
             lisayslause = yhteys.prepareStatement(lisaaKayttajaSQL);
 
@@ -152,12 +151,11 @@ public class Tietovarasto {
             System.out.println("Tietokantayhteys avattu: " + url);
 
             // Määritellään lisäystä varten SQL-lauseet
-            String lisaaKayttajaSQL = "UPDATE aloitteet SET aloitenimi = (?) WHERE aloiteID = (?) ";
-            System.out.println(lisaaKayttajaSQL);
+            String lisaaKayttajaSQL = "UPDATE aloitteet SET aloitekuvaus = (?) WHERE aloiteID = (?) ";
             // Valmistellaan SQL-lause tietokantapalvelinta varten
             lisayslause = yhteys.prepareStatement(lisaaKayttajaSQL);
 
-            lisayslause.setString(1, muokkaa.getAloiteKuvaus());
+            lisayslause.setString(1, muokkaa.getAloitekuvaus());
             lisayslause.setInt(2, muokkaa.getAloiteID());
             
             

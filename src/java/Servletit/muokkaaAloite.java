@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servletit;
 
 import Tietovarastopakkaus.*;
@@ -15,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
  * @author Alex
  */
 @WebServlet(name = "muokkaaAloite", urlPatterns = {"/muokkaaAloite"})
@@ -32,24 +26,24 @@ public class muokkaaAloite extends HttpServlet {
         
         // Talletetaan lomakkeelle syötetut käyttäjän tiedot
         String aloiteID = request.getParameter("aloiteID");
-        String aloiteKuvaus = request.getParameter("aloitekuvaus");
+        String aloitekuvaus = request.getParameter("aloitekuvaus");
         
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet poistaAloite</title>");            
+            out.println("<title>Servlet muokkaaAloite</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Poista aloite</h1>");
+            out.println("<h1>Muokkaa aloite</h1>");
             out.println("AloiteID: "+aloiteID+"<br>");
-            out.println("Aloitekuvaus: "+aloiteKuvaus+"<br>");
+            out.println("Aloitekuvaus: "+aloitekuvaus+"<br>");
             
             // Luodaan käyttäjä-olio lomakkeelta saatujen tietojen avulla
-            Poistaa poistaa = new Poistaa(Integer.parseInt(aloiteID));
+            Muokkaa muokkaa = new Muokkaa(Integer.parseInt(aloiteID), aloitekuvaus);
             
             // Kutusutaan metodia lisaaKayttaja. Metodille väliteään kayttaja-olio
-            if(tietovarasto.poistaAloite(poistaa)){
+            if(tietovarasto.muokkaaAloite(muokkaa)){
                 // Lisäys onnistui
                 out.println("<h2>Muokkaus onnistui</h2>");
             }else{
@@ -57,10 +51,8 @@ public class muokkaaAloite extends HttpServlet {
                 out.println("<h2>Muokkaus epäonnistui</h2>");
             }
             
-            
             out.println("</body>");
             out.println("</html>");
-            
             
         }
     }

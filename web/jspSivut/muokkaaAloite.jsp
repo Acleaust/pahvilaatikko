@@ -51,10 +51,10 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <form action="../../pahvilaatikko/poistaAloite" method="post">
+                        <form action="../../pahvilaatikko/muokkaaAloite" method="post">
                             <input class="form-control" type="text" name="aloiteID" placeholder="Aloite ID">
                             <textarea class="form-control" rows="6" name="aloitekuvaus" placeholder="Aloitteen kuvaus"></textarea>
-                            <button class="btn btn-primary" type="submit" id="nappi" style="background-color:#007ac9;">Poista Aloite</button><button class="btn btn-primary" type="reset"
+                            <button class="btn btn-primary" type="submit" id="nappi" style="background-color:#007ac9;">Muokkaa aloiteta</button><button class="btn btn-primary" type="reset"
                                 id="nappi" style="background-color:#007ac9;">Tyhjennä</button></form>
                     </div>
                 </div>
