@@ -1,7 +1,7 @@
 package Tietovarastopakkaus;
 
 public class Aloite {
-    
+
     private int aloiteID;
     private String aloitenimi;
     private String aloitekuvaus;
@@ -35,7 +35,5 @@ public class Aloite {
     public int getKayttajaID() {
         return kayttajaID;
     }
-    
-    
-    
+
 }

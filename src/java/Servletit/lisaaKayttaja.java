@@ -15,17 +15,6 @@ import java.util.Date;
 @WebServlet(name = "lisaaKayttaja", urlPatterns = {"/lisaaKayttaja"})
 public class lisaaKayttaja extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws S
-     * ervletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
     // Määritellään viitaus Tietovarasto-luokkaan
     private Tietovarasto tietovarasto = new Tietovarasto();
     // Määritellään päiväysolio ja päiväys formaatti (esim. 2017-11-07)
@@ -43,6 +32,7 @@ public class lisaaKayttaja extends HttpServlet {
         String kayttajatunnus = request.getParameter("kayttajatunnus");
         String salasana = request.getParameter("salasana");
         String puhelin = request.getParameter("puhelin");
+        String ryhmaID = request.getParameter("ryhmaID");
         //MUUTETTU: String luontipaivays = request.getParameter("luontipaivays");
         String luontipaivays = sdf.format(date);
             
@@ -63,10 +53,11 @@ public class lisaaKayttaja extends HttpServlet {
             out.println("Salasana: "+salasana+"<br>");
             out.println("Puhelin: "+puhelin+"<br>");
             out.println("Luontipäivä: "+luontipaivays+"<br>");
+            out.println("RyhmäID: "+ryhmaID+"<br>");
             
             // Luodaan käyttäjä-olio lomakkeelta saatujen tietojen avulla
             Kayttaja kayttaja = new Kayttaja(0, etunimi, sukunimi, email, 
-                    kayttajatunnus, salasana, puhelin, luontipaivays);
+                    kayttajatunnus, salasana, puhelin, luontipaivays, ryhmaID);
             
             // Kutusutaan metodia lisaaKayttaja. Metodille väliteään kayttaja-olio
             if(tietovarasto.lisaaKayttaja(kayttaja)){
